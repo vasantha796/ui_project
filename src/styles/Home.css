@@ -141,6 +141,9 @@
     margin-top: 30px;
     
 }
+.card:hover{
+    background: yellow;
+}
 .card{
     width: 250px;
     height: 130px;

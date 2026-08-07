@@ -1,52 +1,170 @@
-.organization-card{
-    width:600px;
-    background:#fff;
-    border:1px solid #ddd;
-    border-radius:8px;
-    padding:20px;
+.organization-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
 }
 
-.organization-card h2{
-    margin-bottom:20px;
+.organization-header h2 {
+    color: #1f2937;
 }
 
-.org-table{
-    width:100%;
-    border-collapse:collapse;
+/* Add Button */
+
+.add-btn {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
 }
 
-.org-table td{
-    border:1px solid #ddd;
-    padding:12px;
+.add-btn:hover {
+    background: #1d4ed8;
 }
 
-.org-table tr:nth-child(even){
-    background:#f5f5f5;
+/* Table */
+
+.organization-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.edit-btn{
-    margin-top:20px;
-    padding:10px 20px;
-    border:none;
-    background:#f59e0b;
+.organization-table th {
+    background: #1f2937;
+    color: white;
+    padding: 14px;
+    text-align: center;
+}
+
+.organization-table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.organization-table tr:nth-child(even) {
+    background: #f9fafb;
+}
+
+.organization-table tr:hover {
+    background: #eef4ff;
+}
+
+/* Buttons */
+
+.organization-table button {
+    padding: 6px 12px;
+    margin: 2px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+}
+
+/* View */
+
+.view-btn {
+    background: #3b82f6;
+}
+
+.view-btn:hover {
+    background: #2563eb;
+}
+
+/* Edit */
+
+.edit-btn {
+    background: #f59e0b;
+}
+
+.edit-btn:hover {
+    background: #d97706;
+}
+
+/* Delete */
+
+.dlt-btn {
+    background: #ef4444;
+}
+
+.dlt-btn:hover {
+    background: #dc2626;
+}
+
+
+
+@media (max-width: 768px) {
+
+    .organization-header {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+
+    .organization-table {
+        display: block;
+        overflow-x: auto;
+    }
+
+}
+
+.form-container{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    width:400px;
+    margin-bottom:25px;
+}
+
+.form-container input{
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
+.save-btn{
+    background:#22c55e;
     color:white;
+    border:none;
+    padding:10px;
     border-radius:5px;
     cursor:pointer;
 }
 
-.edit-btn:hover{
-    background:#d97706;
+.save-btn:hover{
+    background:#16a34a;
 }
 
-.add-btn{
-    margin-top: 20px;
-    padding:10px 20px;
+.cancel-btn{
+    background:#ef4444;
+    color:white;
     border:none;
-    background-color: aqua;
-    border-radius: 5px;
-    cursor: pointer;
-    
+    padding:10px;
+    border-radius:5px;
+    cursor:pointer;
 }
-.add-btn:hover{
-    background: #d97786;
+.organization-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.search-box{
+    width:300px;
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:5px;
+    outline:none;
+}
+
+.search-box:focus{
+    border-color:#2563eb;
 }

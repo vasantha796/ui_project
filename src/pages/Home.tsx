@@ -24,7 +24,7 @@ export const Home =() =>{
                         <h3>Users</h3>
                         <h1>{Users}</h1>
                         </div>
-                        <div className="card" onClick={() =>(navigate("/organization/1"))}>
+                        <div className="card" onClick={() =>(navigate("/organization"))}>
                             <h3>Organizations</h3>
                             <h1>{Organization}</h1>
                         </div>
