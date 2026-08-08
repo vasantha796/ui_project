@@ -3,7 +3,7 @@ import { Home } from "./pages/Home"
 import { BrowserRouter,Routes,Route } from "react-router-dom"
 import { Users } from "./pages/Users"
 import { Services } from "./pages/Services"
-import { Organization } from "./pages/Organization"
+import { OrganizationPage } from "./pages/Organization"
 
 function App() {
  
@@ -15,7 +15,7 @@ function App() {
     <Route path="/home" element={<Home/>}/>
     <Route path="/users" element={<Users/>}/>
     <Route path ="/services/:id" element={<Services/>}/>
-  <Route path="/organization" element={<Organization />} />
+  <Route path="/organization" element={<OrganizationPage />} />
     </Routes>
     </BrowserRouter>
   )

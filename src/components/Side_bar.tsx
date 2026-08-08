@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useOrganization } from "../context/Organizatoncontext";
 import "../styles/Home.css";
 
 export const Side_bar = () => {
 
     const navigate = useNavigate();
+
+    const { organizations } = useOrganization();
 
     const [showOrganization, setShowOrganization] = useState(false);
     const [showServices, setShowServices] = useState(false);
@@ -15,11 +18,10 @@ export const Side_bar = () => {
     };
 
     return (
+
         <div className="sidebar">
 
             <div className="menu">
-
-            
 
                 <button
                     className="menu-btn"
@@ -27,9 +29,6 @@ export const Side_bar = () => {
                 >
                     Users
                 </button>
-
-
-           
 
                 <button
                     className="menu-btn"
@@ -44,36 +43,22 @@ export const Side_bar = () => {
 
                     <div className="submenu">
 
-                        <button
-                            onClick={() => navigate("/organization/1")}
-                        >
-                            Tecnics
-                        </button>
+                        {organizations.map((organization) => (
 
-                        <button
-                            onClick={() => navigate("/organization/2")}
-                        >
-                            Infosys
-                        </button>
+                            <button
+                                key={organization.id}
+                                onClick={() =>
+                                    navigate("/organization")
+                                }
+                            >
+                                {organization.name}
+                            </button>
 
-                        <button
-                            onClick={() => navigate("/organization/3")}
-                        >
-                            TCS
-                        </button>
-
-                        <button
-                            onClick={() => navigate("/organization/4")}
-                        >
-                            Wipro
-                        </button>
+                        ))}
 
                     </div>
 
                 )}
-
-
-                {/* Services */}
 
                 <button
                     className="menu-btn"
@@ -138,5 +123,6 @@ export const Side_bar = () => {
             </button>
 
         </div>
+
     );
 };
