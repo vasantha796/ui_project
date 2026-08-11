@@ -28,7 +28,7 @@ export const Home = () => {
 
                 <main className="content">
 
-                    <h1>Dashboard</h1>
+                    <h1 className="home-title">Dashboard</h1>
 
                     <div className="card-container">
 

@@ -403,9 +403,11 @@ const handleRestore = (
                 {" "}
                 {selectedOrganization.employees}
               </p>
-            
-
-
+              <div className="services-container">
+              {selectedOrganization.services?.map((service,index)=>(
+                <span key={index}className="service-tag">{service}</span>
+              ))}
+            </div>
 
             </div>
 

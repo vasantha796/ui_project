@@ -16,6 +16,7 @@ function App() {
     <Route path="/users" element={<Users/>}/>
     <Route path ="/services/:id" element={<Services/>}/>
   <Route path="/organization" element={<OrganizationPage />} />
+<Route path="/organization/:id" element={<OrganizationPage />} />
     </Routes>
     </BrowserRouter>
   )

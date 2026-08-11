@@ -23,3 +23,93 @@
 .user-table tr:hover{
     background:#e8f0ff;
 }
+
+.user-add-btn{
+    background:#28a45b;
+    color:white;
+    border:none;
+    padding:10px 16px;
+    border-radius:5px;
+    cursor:pointer;
+
+   
+    
+
+}
+.user-edit-btn{
+    background:aqua;
+    color:white;
+    border:none;
+    padding:10px;
+    border-radius:5px;
+    cursor:pointer;
+    row-gap: 2px;
+    margin-right:10px ;
+}
+.user-delete-btn{
+    background:#ef4444;
+    color:white;
+    border:none;
+    padding:10px;
+    border-radius:5px;
+    cursor:pointer;
+}
+.user-add-btn:hover{
+    background: #1f2937;
+}
+.user-edit-btn:hover{
+    background: purple;
+}
+.user-delete-btn:hover{
+    background :#1f2937;
+
+}
+
+.content{
+    width:100%;
+    padding:20px;
+}
+
+.user-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.user-table{
+    width:90%;
+    margin:20px auto; 
+    border-collapse:collapse;
+}
+
+.user-title{
+    margin:0;
+}
+.user-form{
+    
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    width:400px;
+    margin-bottom:25px;
+}
+
+.user-form input{
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
+.save-btn{
+    background:#22c55e;
+    color:white;
+    border:none;
+    padding:10px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.save-btn:hover{
+    background:#16a34a;
+}

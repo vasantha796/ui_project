@@ -18,7 +18,6 @@ export const Side_bar = () => {
     };
 
     return (
-
         <div className="sidebar">
 
             <div className="menu">
@@ -30,6 +29,8 @@ export const Side_bar = () => {
                     Users
                 </button>
 
+                {/* Organizations */}
+
                 <button
                     className="menu-btn"
                     onClick={() =>
@@ -40,25 +41,29 @@ export const Side_bar = () => {
                 </button>
 
                 {showOrganization && (
-
                     <div className="submenu">
 
-                        {organizations.map((organization) => (
+                        <button
+                            onClick={() => navigate("/organization")}
+                        >
+                            View All Organizations
+                        </button>
 
+                        {organizations.map((organization) => (
                             <button
                                 key={organization.id}
                                 onClick={() =>
-                                    navigate("/organization")
+                                    navigate(`/organization/${organization.id}`)
                                 }
                             >
                                 {organization.name}
                             </button>
-
                         ))}
 
                     </div>
-
                 )}
+
+                {/* Services */}
 
                 <button
                     className="menu-btn"
@@ -70,7 +75,6 @@ export const Side_bar = () => {
                 </button>
 
                 {showServices && (
-
                     <div className="submenu">
 
                         <button
@@ -110,7 +114,6 @@ export const Side_bar = () => {
                         </button>
 
                     </div>
-
                 )}
 
             </div>
@@ -123,6 +126,5 @@ export const Side_bar = () => {
             </button>
 
         </div>
-
     );
 };
