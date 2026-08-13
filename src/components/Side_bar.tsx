@@ -9,12 +9,27 @@ export const Side_bar = () => {
 
     const { organizations } = useOrganization();
 
-    const [showOrganization, setShowOrganization] = useState(false);
-    const [showServices, setShowServices] = useState(false);
+    const [showOrganization, setShowOrganization] = useState(()=>{
+        return localStorage.getItem("showOrganization") === "true";
+    });
+
+    const [showServices, setShowServices] = useState(()=>{
+        return localStorage.getItem("showService") === "true";
+    });
 
     const handleLogout = () => {
         localStorage.removeItem("username");
         navigate("/");
+    };
+    const toggleOrganization =() =>{
+        const newValue = !showOrganization;
+        setShowOrganization(newValue);
+        localStorage.setItem("showOrganization",String(newValue))
+    }
+    const toggleService = () =>{
+        const newValue = !showServices;
+        setShowServices(newValue);
+        localStorage.setItem("showService",String(newValue))
     };
 
     return (
@@ -33,10 +48,7 @@ export const Side_bar = () => {
 
                 <button
                     className="menu-btn"
-                    onClick={() =>
-                        setShowOrganization(!showOrganization)
-                    }
-                >
+                    onClick ={toggleOrganization}>
                     {showOrganization ? "▼" : "▶"} Organization
                 </button>
 
@@ -57,7 +69,9 @@ export const Side_bar = () => {
                                 }
                             >
                                 {organization.name}
+                          
                             </button>
+                           
                         ))}
 
                     </div>
@@ -67,10 +81,7 @@ export const Side_bar = () => {
 
                 <button
                     className="menu-btn"
-                    onClick={() =>
-                        setShowServices(!showServices)
-                    }
-                >
+                    onClick={toggleService}>
                     {showServices ? "▼" : "▶"} Services
                 </button>
 

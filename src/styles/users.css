@@ -1,3 +1,17 @@
+.user-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.search-box{
+    padding:10px;
+    width:250px;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
 .user-table{
     width:100%;
     border-collapse:collapse;
@@ -24,92 +38,109 @@
     background:#e8f0ff;
 }
 
-.user-add-btn{
-    background:#28a45b;
+.add-btn{
+    background:#28a745;
     color:white;
     border:none;
     padding:10px 16px;
     border-radius:5px;
     cursor:pointer;
-
-   
-    
-
 }
-.user-edit-btn{
-    background:aqua;
+
+.add-btn:hover{
+    background:#218838;
+}
+
+.edit-btn{
+    background:#0dcaf0;
     color:white;
     border:none;
-    padding:10px;
+    padding:8px 12px;
     border-radius:5px;
     cursor:pointer;
-    row-gap: 2px;
-    margin-right:10px ;
+    margin-right:8px;
 }
-.user-delete-btn{
-    background:#ef4444;
+
+.edit-btn:hover{
+    background:#0aa2c0;
+}
+
+.dlt-btn{
+    background:#dc3545;
     color:white;
     border:none;
-    padding:10px;
+    padding:8px 12px;
     border-radius:5px;
     cursor:pointer;
 }
-.user-add-btn:hover{
-    background: #1f2937;
-}
-.user-edit-btn:hover{
-    background: purple;
-}
-.user-delete-btn:hover{
-    background :#1f2937;
 
+.dlt-btn:hover{
+    background:#bb2d3b;
 }
 
-.content{
-    width:100%;
-    padding:20px;
+.restore-btn{
+    background:#198754;
+    color:white;
+    border:none;
+    padding:8px 12px;
+    border-radius:5px;
+    cursor:pointer;
 }
 
-.user-header{
+.restore-btn:hover{
+    background:#146c43;
+}
+
+.form-container{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin:20px 0;
+    padding:15px;
+    background:#f8f9fa;
+    border-radius:8px;
+}
+
+.form-container input{
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:5px;
+    min-width:200px;
+}
+
+.save-btn{
+    background:#198754;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.save-btn:hover{
+    background:#146c43;
+}
+
+.cancel-btn{
+    background:#6c757d;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.cancel-btn:hover{
+    background:#565e64;
+}
+
+.organization-header{
     display:flex;
     justify-content:space-between;
     align-items:center;
     margin-bottom:20px;
 }
 
-.user-table{
-    width:90%;
-    margin:20px auto; 
-    border-collapse:collapse;
-}
-
-.user-title{
+.content h2{
     margin:0;
-}
-.user-form{
-    
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-    width:400px;
-    margin-bottom:25px;
-}
-
-.user-form input{
-    padding:10px;
-    border:1px solid #ccc;
-    border-radius:5px;
-}
-
-.save-btn{
-    background:#22c55e;
-    color:white;
-    border:none;
-    padding:10px;
-    border-radius:5px;
-    cursor:pointer;
-}
-
-.save-btn:hover{
-    background:#16a34a;
 }

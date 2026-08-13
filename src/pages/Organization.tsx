@@ -8,6 +8,7 @@ import "../styles/organization.css";
 
 
 
+
 export const OrganizationPage = () => {
   const {
     organizations,
@@ -48,7 +49,8 @@ export const OrganizationPage = () => {
     !newOrganization.location ||
     !newOrganization.email ||
     !newOrganization.phone ||
-    newOrganization.employees <= 0
+    newOrganization.employees <= 0 ||
+    !newOrganization.services
   ) {
     alert("Please fill all fields");
     return;
@@ -404,7 +406,7 @@ const handleRestore = (
                 {selectedOrganization.employees}
               </p>
               <div className="services-container">
-              {selectedOrganization.services?.map((service,index)=>(
+              {selectedOrganization.services.map((service,index)=>(
                 <span key={index}className="service-tag">{service}</span>
               ))}
             </div>
@@ -423,6 +425,7 @@ const handleRestore = (
                 <th>Email</th>
                 <th>Phone</th>
                 <th>Employees</th>
+               
                 <th>Actions</th>
         
               </tr>

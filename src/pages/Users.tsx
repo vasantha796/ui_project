@@ -1,76 +1,60 @@
 import { useState } from "react";
 import { Navbar } from "../components/Navbar";
 import { Side_bar } from "../components/Side_bar";
+import type { User } from "../context/usercontext";
+import { useuser } from "../context/usercontext";
 import "../styles/users.css";
 
-interface User {
-  id: number;
-  name: string;
-  email: string;
-  role: string;
-}
+export const USER = () => {
 
-export const Users = () => {
-  const [users, setUsers] = useState<User[]>([
-    {
-      id: 1,
-      name: "Rahul",
-      email: "Rahul21@gmail.com",
-      role: "Admin",
-    },
-    {
-      id: 2,
-      name: "Priya",
-      email: "Priya12@gmail.com",
-      role: "Employee",
-    },
-    {
-      id: 3,
-      name: "Raghav",
-      email: "Raghav123@gmail.com",
-      role: "Employee",
-    },
-    {
-      id: 4,
-      name: "Rahul.R",
-      email: "Rahul121@gmail.com",
-      role: "Employee",
-    },
-    {
-      id: 5,
-      name: "Wincy",
-      email: "wincy21@gmail.com",
-      role: "Manager",
-    },
-  ]);
+  const {
+    users,
+    setusers,
+    deletedusers,
+    setDeletedusers,
+  } = useuser();
 
   const [showForm, setShowForm] = useState(false);
 
-  const [newUser, setNewUser] = useState({
-    name: "",
-    email: "",
-    role: "",
-  });
+  const [isEditing, setIsEditing] =
+    useState(false);
 
-  const [isEditing, setIsEditing] = useState(false);
-  const [editId, setEditId] = useState<number | null>(null);
+  const [editId, setEditId] =
+    useState<number | null>(null);
+
+  const [search, setSearch] =
+    useState("");
 
 
-  const handleAddUser = () => {
-    if(!newUser.name || !newUser.email || !newUser.role){
-        alert("fill all the fields")
-        return;
+  const [newuser, setNewuser] =
+    useState({
+      name: "",
+      email: "",
+      role: "",
+    });
+
+  const handleAdduser = () => {
+
+    if (
+      !newuser.name ||
+      !newuser.email ||
+      !newuser.role
+    ) {
+      alert("Please fill all fields");
+      return;
     }
 
     const user: User = {
       id: Date.now(),
-      ...newUser,
+      ...newuser,
     };
-   
 
-    setUsers([...users, user]);
+    setusers([
+      ...users,
+      user,
+    ]);
 
-    setNewUser({
+    setNewuser({
       name: "",
       email: "",
       role: "",
@@ -79,119 +63,222 @@ export const Users = () => {
     setShowForm(false);
   };
 
-  const handleEdit = (user: User) => {
+  const handleEdit = (
+    user: User
+  ) => {
+
     setShowForm(true);
+
     setIsEditing(true);
+
     setEditId(user.id);
 
-    setNewUser({
-      
+    setNewuser({
       name: user.name,
       email: user.email,
       role: user.role,
     });
-   
   };
 
   const handleUpdate = () => {
-    const updatedUsers = users.map((user) =>
-      user.id === editId
-        ? {
-            ...user,
-            ...newUser,
-          }
-        : user
-    );
 
-    setUsers(updatedUsers);
+    const updatedusers =
+      users.map((user) =>
+        user.id === editId
+          ? {
+              ...user,
+              ...newuser,
+            }
+          : user
+      );
+
+    setusers(updatedusers);
+
+    setIsEditing(false);
+
+    setEditId(null);
 
     setShowForm(false);
-    setIsEditing(false);
-    setEditId(null);
-    setNewUser({
-        name:"",
-        email:"",
-        role:"",
-    })
+
+    setNewuser({
+      name: "",
+      email: "",
+      role: "",
+    });
   };
 
-  const handleDelete = (id: number) => {
-    const usertodelete = users.find((user)=>user.id === id);
-    if(!usertodelete) return;
-   
+  const handleDelete = (
+    id: number
+  ) => {
 
+    const userToDelete =
+      users.find(
+        (user) =>
+          user.id === id
+      );
+
+    if (!userToDelete) return;
+
+    const confirmDelete =
+      window.confirm(
+        "Are you sure you want to delete?"
+      );
+
+    if (!confirmDelete) return;
+
+    setDeletedusers([
+      ...deletedusers,
+      userToDelete,
+    ]);
+
+    setusers(
+      users.filter(
+        (user) =>
+          user.id !== id
+      )
+    );
   };
+
+  const handleRestore = (
+    user: User
+  ) => {
+
+    setusers([
+      ...users,
+      user,
+    ]);
+
+    setDeletedusers(
+      deletedusers.filter(
+        (deleteduser) =>
+          deleteduser.id !== user.id
+      )
+    );
+  };
+
+  const filteredusers =
+    users.filter(
+      (user) =>
+        user.name
+          .toLowerCase()
+          .includes(
+            search.toLowerCase()
+          )
+          
+    );
 
   return (
     <div className="home">
+
       <Navbar />
 
       <div className="home-body">
+
         <Side_bar />
 
         <main className="content">
-            <div className="user-header">
-          <h1 className="user-title">Users</h1>
 
-          <button
-            className="user-add-btn"
-            onClick={() => setShowForm(true)}
-          >
-            + Add User
-          </button>
+          <div className="d-flex justify-content-between align-items-center mb-4">
+
+            <h2 className="mb-0">Users</h2>
+
+            <div className="d-flex gap-2">
+
+              <input
+                type="text"
+                placeholder="Search User"
+                value={search}
+                onChange={(e) =>
+                  setSearch(
+                    e.target.value
+                  )
+                }
+                className="form-control"
+                style={{width:"250px"}}
+
+              />
+
+              <button
+                className="btn btn-success"
+                onClick={() =>
+                  setShowForm(true)
+                }
+              >
+                + Add User
+              </button>
+
+            </div>
+
           </div>
 
           {showForm && (
-            <div className="user-form">
+
+            <div className="form-container">
+
               <input
-                type="text"
                 placeholder="Name"
-                value={newUser.name}
+                value={newuser.name}
                 onChange={(e) =>
-                  setNewUser({
-                    ...newUser,
-                    name: e.target.value,
+                  setNewuser({
+                    ...newuser,
+                    name:
+                      e.target.value,
                   })
                 }
               />
 
               <input
-                type="email"
                 placeholder="Email"
-                value={newUser.email}
+                value={newuser.email}
                 onChange={(e) =>
-                  setNewUser({
-                    ...newUser,
-                    email: e.target.value,
+                  setNewuser({
+                    ...newuser,
+                    email:
+                      e.target.value,
                   })
                 }
               />
 
               <input
-                type="text"
                 placeholder="Role"
-                value={newUser.role}
+                value={newuser.role}
                 onChange={(e) =>
-                  setNewUser({
-                    ...newUser,
-                    role: e.target.value,
+                  setNewuser({
+                    ...newuser,
+                    role:
+                      e.target.value,
                   })
                 }
               />
 
-              <button className="save-btn"
+              <button
+                className="save-btn"
                 onClick={
                   isEditing
                     ? handleUpdate
-                    : handleAddUser
+                    : handleAdduser
                 }
               >
-                {isEditing ? "Update" : "Save"}
+                {isEditing
+                  ? "Update"
+                  : "Save"}
               </button>
+
+              <button
+                className="cancel-btn"
+                onClick={() =>
+                  setShowForm(false)
+                }
+              >
+                Cancel
+              </button>
+
             </div>
+
           )}
 
           <table className="user-table">
+
             <thead>
               <tr>
                 <th>ID</th>
@@ -203,41 +290,109 @@ export const Users = () => {
             </thead>
 
             <tbody>
-              {users.map((user) => (
-                <tr key={user.id}>
-                  <td>{user.id}</td>
-                  <td>{user.name}</td>
-                  <td>{user.email}</td>
-                  <td>{user.role}</td>
 
-                  <td>
-                  
-                    <button
-                      className="user-edit-btn"
-                      onClick={() =>
-                        handleEdit(user)
-                      }
-                    >
-                      Edit
-                    </button>
+              {filteredusers.map(
+                (user) => (
+                  <tr
+                    key={user.id}
+                  >
+                    <td>{user.id}</td>
+                    <td>{user.name}</td>
+                    <td>{user.email}</td>
+                    <td>{user.role}</td>
 
-                    <button
-                      className="user-delete-btn"
-                      onClick={() =>
-                        handleDelete(user.id)
-                      }
-                    >
-                      Delete
-                    </button>
-                  
-                  </td>
-                </tr>
-              ))}
+                    <td>
+
+                      <button
+                        className="edit-btn"
+                        onClick={() =>
+                          handleEdit(
+                            user
+                          )
+                        }
+                      >
+                        Edit
+                      </button>
+
+                      <button
+                        className="dlt-btn"
+                        onClick={() =>
+                          handleDelete(
+                            user.id
+                          )
+                        }
+                      >
+                        Delete
+                      </button>
+
+                    </td>
+
+                  </tr>
+                )
+              )}
+
             </tbody>
+
           </table>
-        
+
+          <h2
+            style={{
+              marginTop: "30px",
+              marginBottom: "10px",
+            }}
+          >
+            Deleted Users
+          </h2>
+
+          <table className="user-table">
+
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Restore</th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              {deletedusers.map(
+                (user) => (
+
+                  <tr key={user.id}>
+
+                    <td>{user.id}</td>
+
+                    <td>{user.name}</td>
+
+                    <td>
+
+                      <button
+                        className="restore-btn"
+                        onClick={() =>
+                          handleRestore(
+                            user
+                          )
+                        }
+                      >
+                        Restore
+                      </button>
+
+                    </td>
+
+                  </tr>
+
+                )
+              )}
+
+            </tbody>
+
+          </table>
+
         </main>
+
       </div>
+
     </div>
   );
 };
