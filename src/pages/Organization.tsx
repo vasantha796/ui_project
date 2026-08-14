@@ -225,11 +225,11 @@ const handleRestore = (
 
         <main className="content">
 
-          <div className="organization-header">
+          <div className="d-flex justify-content-between align-items-center mb-4">
 
             <h2>Organizations</h2>
 
-            <div className="organization-top">
+            <div className="d-flex gap-2">
 
               <input
                 type="text"
@@ -240,11 +240,12 @@ const handleRestore = (
                     e.target.value
                   )
                 }
-                className="search-box"
+                className="form-control"
+                style={{width:"250px", marginRight:"250px"}}
               />
 
               <button
-                className="add-btn"
+                className="btn btn-success"
                 onClick={() =>
                   setShowForm(true)
                 }
@@ -258,9 +259,10 @@ const handleRestore = (
 
           {showForm && (
 
-            <div className="form-container">
+            <div className="card p-3 mb-4">
 
               <input
+              className="form-control mb-2"
                 placeholder="Name"
                 value={
                   newOrganization.name
@@ -275,6 +277,7 @@ const handleRestore = (
               />
 
               <input
+              className="form-control mb-2"
                 placeholder="Location"
                 value={
                   newOrganization.location
@@ -289,6 +292,7 @@ const handleRestore = (
               />
 
               <input
+              className="form-control mb-2"
                 placeholder="Email"
                 value={
                   newOrganization.email
@@ -303,6 +307,7 @@ const handleRestore = (
               />
 
               <input
+              className="form-control mb-2"
                 placeholder="Phone"
                 value={
                   newOrganization.phone
@@ -317,6 +322,7 @@ const handleRestore = (
               />
 
               <input
+              className="form-control mb-2"
                 type="number"
                 placeholder="Employees"
                 value={
@@ -333,6 +339,7 @@ const handleRestore = (
                 }
               />
               <input 
+              className="form-control mb-2"
                  type="text"
                  placeholder="Services"
                  onChange={(e)=>({
@@ -343,7 +350,7 @@ const handleRestore = (
                 />
 
               <button
-                className="save-btn"
+                className="btn btn-success mb-2"
                 onClick={
                   isEditing
                     ? handleUpdate
@@ -356,7 +363,7 @@ const handleRestore = (
               </button>
 
               <button
-                className="cancel-btn"
+                className="btn btn-secondary mb-2"
                 onClick={() =>
                   setShowForm(false)
                 }
@@ -370,7 +377,7 @@ const handleRestore = (
 
           {selectedOrganization && (
 
-            <div className="view-card">
+            <div className="view-card ">
 
               <h3>
                 Organization Details
@@ -415,7 +422,7 @@ const handleRestore = (
 
           )}
 
-          <table className="organization-table">
+          <table className="table table-striped table-bordered table-hover">
 
             <thead>
               <tr>
@@ -466,7 +473,7 @@ const handleRestore = (
                     <td>
 
                       <button
-                        className="view-btn"
+                        className="btn btn-primary btn-sm me-2"
                         onClick={() =>
                           handleView(
                             organization
@@ -477,7 +484,7 @@ const handleRestore = (
                       </button>
 
                       <button
-                        className="edit-btn"
+                        className="btn btn-warning btn-sm me-2"
                         onClick={() =>
                           handleEdit(
                             organization
@@ -488,7 +495,7 @@ const handleRestore = (
                       </button>
 
                       <button
-                        className="dlt-btn"
+                        className="btn btn-danger btn-sm"
                         onClick={() =>
                           handleDelete(
                             organization.id
@@ -517,7 +524,7 @@ const handleRestore = (
   Deleted Organizations
 </h2>
 
-<table className="organization-table">
+<table className="table table-bordered table-hover">
 
   <thead>
     <tr>
@@ -541,7 +548,7 @@ const handleRestore = (
           <td>
 
             <button
-              className="restore-btn"
+              className="btn btn-success btn-sm"
               onClick={() =>
                 handleRestore(
                   organization

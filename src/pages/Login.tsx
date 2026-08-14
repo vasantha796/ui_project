@@ -1,6 +1,6 @@
 import { useState,useRef,useEffect} from "react"
 import { useNavigate } from "react-router-dom"
-import "../styles/Page.css"
+// import "../styles/Page.css"
 export const Login =() =>{
     const[username,setUsername] = useState("");
     const[password,setPassword] = useState("");
@@ -26,38 +26,88 @@ export const Login =() =>{
     }
     return(
    
-<div className="container">
+<div className="container-fluid vh-100">
 
-    <div className="left-panel">
-        <h1>Hello!</h1>
+  <div className="row h-100">
+
+    <div className="col-md-6 bg-primary text-white d-flex flex-column justify-content-center align-items-center">
+
+      <h1>Hello!</h1>
+      <p>Welcome to Tecnics Dashboard</p>
+
+    </div>
+
+    <div className="col-md-6 d-flex justify-content-center align-items-center">
+
+      <div
+        className="card shadow p-4"
+        style={{ width: "400px" }}
+      >
+
+        <h2 className="text-center mb-4">
+          Login Form
+        </h2>
+
+        <form onSubmit={handleLogin}>
+
+          <input
+            ref={inputRef}
+            type="text"
+            placeholder="Username"
+            className="form-control mb-3"
+            onChange={(e) =>
+              setUsername(e.target.value)
+            }
+          />
+
+          <input
+            type="password"
+            placeholder="Password"
+            className="form-control mb-3"
+            onChange={(e) =>
+              setPassword(e.target.value)
+            }
+          />
+
+          {error && (
+            <div className="alert alert-danger">
+              {error}
+            </div>
+          )}
+
+<div className="text-center mt-3">
+
+  <button
+    type="submit"
+    className="btn btn-primary"
+  >
+    Login
+  </button>
+
+  <p className="mt-3 mb-0">
+
+    Don't have an account?{" "}
+
+    <button
+      type="button"
+      className="btn btn-link p-0"
+      onClick={() => navigate("/signup")}
+    >
+      Sign Up
+    </button>
+
+  </p>
+
+</div>
         
-    </div>
 
-    <div className="right-panel">
+        </form>
 
-        <div className="login-box">
-
-            <h2>Login Form</h2>
-            <form onSubmit={handleLogin}>
-
-            <input 
-            ref={inputRef}
-            type="text" placeholder="Username"
-             onChange={(e) =>setUsername(e.target.value)}/>
-
-            <input 
-            ref={inputRef}
-            type="password" placeholder="Password" 
-            onChange={(e) =>setPassword(e.target.value)}/>
-            
-            {error && <p className="error">{error}</p>}
-
-            <button className="login-btn" type="submit">Login</button> &nbsp;
-            <button className="signup-btn">Sign up</button>
-            </form>
-        </div>
+      </div>
 
     </div>
+
+  </div>
 
 </div>
 

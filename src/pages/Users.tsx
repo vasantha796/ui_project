@@ -194,7 +194,7 @@ export const USER = () => {
                   )
                 }
                 className="form-control"
-                style={{width:"250px"}}
+                style={{width:"250px", marginRight:"250px"}}
 
               />
 
@@ -213,9 +213,10 @@ export const USER = () => {
 
           {showForm && (
 
-            <div className="form-container">
+            <div className="card p-3 mb-4">
 
               <input
+              className="form-control mb-2"
                 placeholder="Name"
                 value={newuser.name}
                 onChange={(e) =>
@@ -228,6 +229,7 @@ export const USER = () => {
               />
 
               <input
+              className="form-control mb-2"
                 placeholder="Email"
                 value={newuser.email}
                 onChange={(e) =>
@@ -240,6 +242,7 @@ export const USER = () => {
               />
 
               <input
+              className="form-control mb-2"
                 placeholder="Role"
                 value={newuser.role}
                 onChange={(e) =>
@@ -252,7 +255,8 @@ export const USER = () => {
               />
 
               <button
-                className="save-btn"
+
+                className="btn btn-success me-2 mb-2"
                 onClick={
                   isEditing
                     ? handleUpdate
@@ -265,7 +269,7 @@ export const USER = () => {
               </button>
 
               <button
-                className="cancel-btn"
+                className="btn btn-secondary me-2 mb-2"
                 onClick={() =>
                   setShowForm(false)
                 }
@@ -277,7 +281,7 @@ export const USER = () => {
 
           )}
 
-          <table className="user-table">
+          <table className="table table-striped table-bordered table-hover">
 
             <thead>
               <tr>
@@ -304,7 +308,7 @@ export const USER = () => {
                     <td>
 
                       <button
-                        className="edit-btn"
+                        className="btn btn-warning btn-sm mb-2 me-2"
                         onClick={() =>
                           handleEdit(
                             user
@@ -315,7 +319,7 @@ export const USER = () => {
                       </button>
 
                       <button
-                        className="dlt-btn"
+                        className="btn btn-danger btn-sm mb-2"
                         onClick={() =>
                           handleDelete(
                             user.id
@@ -344,7 +348,7 @@ export const USER = () => {
             Deleted Users
           </h2>
 
-          <table className="user-table">
+          <table className="table table-bordered table-hover">
 
             <thead>
               <tr>
@@ -368,7 +372,7 @@ export const USER = () => {
                     <td>
 
                       <button
-                        className="restore-btn"
+                        className="btn btn-success btn-sm mb-2"
                         onClick={() =>
                           handleRestore(
                             user

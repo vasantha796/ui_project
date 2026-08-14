@@ -58,7 +58,7 @@ export const Side_bar = () => {
                         <button
                             onClick={() => navigate("/organization")}
                         >
-                            View All Organizations
+                            All Organizations
                         </button>
 
                         {organizations.map((organization) => (
