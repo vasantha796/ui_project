@@ -214,3 +214,24 @@
 .user-logo-btn:hover{
     background: yellow;
 }
+
+body.light {
+  background: #f8f9fa;
+  color: black;
+}
+
+body.dark {
+  background: #121212;
+  color: white;
+}
+
+/* navbar */
+
+body.dark .navbar {
+  background: #1e1e1e;
+}
+
+body.dark .card {
+  background: #2c2c2c;
+  color: white;
+}

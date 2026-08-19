@@ -41,7 +41,7 @@ export const OrganizationPage = () => {
       email: "",
       phone: "",
       employees: 0,
-      services: []
+      services: [] as string[]
     });
     const handleAddOrganization = () => {
   if (
@@ -72,7 +72,7 @@ export const OrganizationPage = () => {
     email: "",
     phone: "",
     employees: 0,
-    services:[],
+    services: [] as string[],
   });
 
   setShowForm(false);
@@ -95,7 +95,7 @@ export const OrganizationPage = () => {
       email: organization.email,
       phone: organization.phone,
       employees: organization.employees,
-      services:[],
+      services:organization.services,
     });
   };
 
@@ -338,16 +338,20 @@ const handleRestore = (
                   })
                 }
               />
-              <input 
-              className="form-control mb-2"
-                 type="text"
-                 placeholder="Services"
-                 onChange={(e)=>({
-                    ...newOrganization,
-                    services: e.target.value.split(",")
-                 })
-                }
-                />
+             <input
+  className="form-control mb-2"
+  type="text"
+  placeholder="Services"
+  value={newOrganization.services.join(",")}
+  onChange={(e) =>
+    setNewOrganization({
+      ...newOrganization,
+      services: e.target.value
+        .split(",")
+        .map((service) => service.trim()),
+    })
+  }
+/>
 
               <button
                 className="btn btn-success mb-2"
@@ -413,7 +417,7 @@ const handleRestore = (
                 {selectedOrganization.employees}
               </p>
               <div className="services-container">
-              {selectedOrganization.services.map((service,index)=>(
+              {selectedOrganization.services?.map((service,index)=>(
                 <span key={index}className="service-tag">{service}</span>
               ))}
             </div>

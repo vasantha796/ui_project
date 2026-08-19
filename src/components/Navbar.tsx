@@ -2,11 +2,17 @@ import {
   FaBell,
   FaHome,
   FaUserCircle,
+  FaMoon,
+  FaSun,
 } from "react-icons/fa";
 
 import { useNavigate } from "react-router-dom";
+import { useTheme } from "../context/ThemeContext";
+
+
 
 export const Navbar = () => {
+    const {theme,toggleTheme} = useTheme();
 
   const username =
     localStorage.getItem("username");
@@ -49,6 +55,13 @@ export const Navbar = () => {
             <FaUserCircle size={28} />
 
             <span>{username}</span>
+            <button
+             className="btn btn-light"
+               onClick={toggleTheme} >                             
+             {theme === "light"
+    ? <FaMoon />
+    : <FaSun />}
+</button>
 
           </div>
 

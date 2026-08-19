@@ -17,7 +17,7 @@ export const OrganizationDetails = () => {
 
   return (
 
-    <div className="container mt-4">
+    <div className="container mt-4 p-4">
 
       <div className="card p-4">
 

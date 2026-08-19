@@ -7,6 +7,7 @@ import { OrganizationPage } from "./pages/Organization"
 import {Signup} from "./pages/signup"
 import { OrganizationDetails } from "./pages/OrganizationDetails"
 
+
 function App() {
  
 
